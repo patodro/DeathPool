@@ -221,7 +221,18 @@
 		<script>
 			var board = document.getElementsByClassName("draftBoard")[0];
 			var body = board.tBodies[0];
-			console.log(body);
+			var age;
+			var score;
+			for (var i=0, row; row = body.rows[i]; i++) {
+				for (var j=1, col; col = row.cells[j]; j++) {
+					if (col.innerText) {
+						let age = col.innerText.match(/(\d+)/)[0];
+						let score = 110 - age;
+						col.insertAdjacentHTML("beforeend", "\t");
+						col.insertAdjacentHTML("beforeend", `<i>${score}</i>`);
+					}
+				}
+			}
 		</script>
 	</body>
 </html>
